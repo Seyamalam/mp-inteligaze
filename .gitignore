@@ -1,0 +1,15 @@
+/.env
+.dot
+.log
+.wrb
+.out
+.aux
+.nav
+.snm
+.toc
+.vrb
+.bbl
+.blg
+.bcf
+.run.xml
+.synctex.gz

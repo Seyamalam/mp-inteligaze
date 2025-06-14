@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligaze Prototype</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <h1>Inteligaze Prototype</h1>
+    <h2>Team Rustacean</h1>
+
+    <div class="main-container"> <!-- Added main container -->
+        <div class="left-panel"> <!-- Container for video -->
+            <video id="videoFeed" autoplay playsinline></video>
+            <canvas id="canvas" class="hidden"></canvas> <!-- For capturing frames -->
+        </div>
+
+        <div class="right-panel"> <!-- Container for controls and IO -->
+            <div class="video-source-selector">
+                <label>Video Source:</label>
+                <input type="radio" id="sourceWebcam" name="videoSource" value="webcam" checked>
+                <label for="sourceWebcam">Webcam</label>
+                <input type="radio" id="sourceEsp32" name="videoSource" value="esp32">
+                <label for="sourceEsp32">ESP32</label>
+                <div id="esp32IpContainer" class="hidden" style="margin-left: 10px; display: inline-block;">
+                    <label for="esp32Ip">ESP32 IP:</label>
+                    <input type="text" id="esp32Ip" placeholder="e.g., 192.168.1.100">
+                </div>
+            </div>
+
+            <div class="io-areas">
+                <div>
+                    <label for="baseURL">Base API:</label><br>
+                    <input type="text" id="baseURL" name="baseURL" style="width: 100%;" value="https://8080-01jvyxcckwn7v10c56ara2prnw.cloudspaces.litng.ai">
+                </div>
+                <div>
+                    <label for="instructionText">Instruction:</label><br>
+                    <textarea id="instructionText" style="height: 2em; width: 100%;" name="Instruction"></textarea>
+                </div>
+                <div>
+                    <label for="responseText">Response:</label><br>
+                    <textarea id="responseText" style="height: 2em; width: 100%;" name="Response" readonly placeholder="Server response will appear here..."></textarea>
+                </div>
+            </div>
+
+            <div class="controls">
+                <label for="intervalSelect">Interval between 2 requests:</label>
+                <select id="intervalSelect" name="Interval between 2 requests">
+                    <option value="100">100ms</option>
+                    <option value="250">250ms</option>
+                    <option value="500" selected>500ms</option>
+                    <option value="1000">1s</option>
+                    <option value="2000">2s</option>
+                </select>
+                <button id="startButton" class="start">Start</button>
+            </div>
+        </div> <!-- End of right-panel -->
+    </div> <!-- End of main-container -->
+
+    <script src="script.js"></script>
+</body>
+</html>

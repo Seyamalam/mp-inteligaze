@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Vision Assistant</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #181818; color: #eee; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; background: #232323; border-radius: 10px; padding: 30px; box-shadow: 0 0 20px #0008; }
+        h1 { text-align: center; }
+        label { display: block; margin-top: 20px; }
+        input[type="file"], input[type="text"], textarea { width: 100%; margin-top: 5px; padding: 8px; border-radius: 5px; border: none; background: #2c2c2c; color: #eee; }
+        button { margin-top: 20px; width: 100%; padding: 12px; background: #4e8cff; color: #fff; border: none; border-radius: 5px; font-size: 1.1em; cursor: pointer; }
+        button:disabled { background: #888; }
+        .response { margin-top: 25px; background: #222; padding: 15px; border-radius: 8px; min-height: 60px; }
+        .log { margin-top: 15px; font-size: 0.95em; color: #aaa; background: #191919; border-radius: 5px; padding: 10px; min-height: 30px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>AI Vision Assistant</h1>
+    <form id="visionForm">
+        <label>Image:
+            <input type="file" id="imageInput" accept="image/*" required>
+        </label>
+        <label>Instruction:
+            <input type="text" id="instructionInput" value="What do you see?">
+        </label>
+        <button type="submit" id="submitBtn">Send to AI</button>
+    </form>
+    <div class="response" id="responseBox"></div>
+    <div class="log" id="logBox"></div>
+</div>
+<script>
+const form = document.getElementById('visionForm');
+const imageInput = document.getElementById('imageInput');
+const instructionInput = document.getElementById('instructionInput');
+const responseBox = document.getElementById('responseBox');
+const logBox = document.getElementById('logBox');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    responseBox.textContent = '';
+    logBox.textContent = 'Uploading and processing...';
+    submitBtn.disabled = true;
+
+    const file = imageInput.files[0];
+    const instruction = instructionInput.value || '';
+    if (!file) {
+        logBox.textContent = 'Please select an image.';
+        submitBtn.disabled = false;
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('instruction', instruction);
+
+    try {
+        const res = await fetch('http://127.0.0.1:8000/vision', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+        if (data.response) {
+            responseBox.textContent = data.response;
+            logBox.textContent = 'Success!';
+        } else {
+            responseBox.textContent = '';
+            logBox.textContent = data.error || 'Unknown error.';
+        }
+    } catch (err) {
+        responseBox.textContent = '';
+        logBox.textContent = 'Request failed: ' + err;
+    }
+    submitBtn.disabled = false;
+});
+</script>
+</body>
+</html>
