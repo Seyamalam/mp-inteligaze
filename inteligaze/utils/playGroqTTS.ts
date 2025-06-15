@@ -3,7 +3,7 @@ import * as FileSystem from 'expo-file-system';
 import { Audio } from 'expo-av';
 
 // WARNING: Do not expose your real API key in production apps!
-const GROQ_API_KEY = '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';
+const GROQ_API_KEY = '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';
 
 // Helper to convert ArrayBuffer to base64 (since Buffer is not available in React Native)
 function arrayBufferToBase64(buffer: ArrayBuffer): string {
