@@ -3,8 +3,8 @@
 #include "esp_http_server.h"
 #include "esp_timer.h"
 
-const char* ssid = "Seyam 2.4";
-const char* password = "Seyam018@#";
+const char* ssid = "daddy";
+const char* password = "112255880099";
 
 
 #define CAMERA_MODEL_AI_THINKER

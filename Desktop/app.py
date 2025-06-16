@@ -12,7 +12,7 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtGui import QImage, QPixmap, QFont, QPalette
 from PyQt6.QtCore import QTimer, Qt, QThread, pyqtSignal
 
-ESP32_URL = "http://192.168.0.237/"
+ESP32_URL = "http://192.168.251.53/"
 BACKEND_URL = "https://8080-01jvyxcckwn7v10c56ara2prnw.cloudspaces.litng.ai"
 DEFAULT_INSTRUCTION = "You are an assistive vision system for the visually impaired. Given an image from a wearable camera, describe the scene in a way that maximizes situational awareness and independence. Clearly identify objects, obstacles, people, and signage. If there is text in the scene, read it aloud and explain its context (e.g., sign, label, document). Use short, direct sentences and avoid technical jargon. Prioritize information that would help a visually impaired user navigate or understand their environment."
 

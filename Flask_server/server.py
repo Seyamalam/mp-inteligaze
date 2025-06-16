@@ -24,7 +24,7 @@ app.add_middleware(
 
 # Example: Replace with your actual AI backend endpoint and key
 AI_BACKEND_URL = "https://8080-01jvyxcckwn7v10c56ara2prnw.cloudspaces.litng.ai/v1/chat/completions"
-ESP32_STREAM_URL = "http://192.168.0.237/"  # <-- Set your ESP32 MJPEG stream URL here
+ESP32_STREAM_URL = "http://192.168.251.53/"  # <-- Set your ESP32 MJPEG stream URL here
 OPTIMIZED_PROMPT = (
     "You are an assistive vision system for the visually impaired. "
     "Given an image from a wearable or mobile camera, describe the scene in a way that maximizes situational awareness and independence. "

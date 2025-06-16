@@ -1,28 +1,28 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  ActivityIndicator,
-  Modal,
-  TouchableOpacity,
-  Switch,
-  FlatList,
-} from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import VisionStatusBar from "@/components/VisionStatusBar";
 import CaptureControls from "@/components/CaptureControls";
-import ResponseCard from "@/components/ResponseCard";
 import HistoryList from "@/components/HistoryList";
 import LogPanel from "@/components/LogPanel";
-import axios from "axios";
+import ResponseCard from "@/components/ResponseCard";
+import VisionStatusBar from "@/components/VisionStatusBar";
 import { playGroqTTS } from '@/utils/playGroqTTS';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  Modal,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 const SERVER_URL_KEY = 'server_url';
 const ESP32_IP_KEY = 'esp32_ip';
 
 export default function VisionTab() {
-  const [serverUrl, setServerUrl] = useState('http://127.0.0.1:8000');
+  const [serverUrl, setServerUrl] = useState('http://192.168.251.41:8000');
   const [esp32Ip, setEsp32Ip] = useState('192.168.0.237');
   const [status, setStatus] = useState<"connected" | "disconnected">(
     "disconnected"
